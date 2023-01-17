@@ -44,7 +44,7 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         //DEBUG
-        dd($request->all());
+        // dd($request->all());
 
         $data = $request->validated();
         $data['slug'] = Project::generateSlug($data['title']);
@@ -55,6 +55,10 @@ class ProjectController extends Controller
         };
 
         $project = Project::create($data);
+
+        if ($request->has('technologies')) {
+            $project->technologies()->attach($request->technologies);
+        }
 
         return redirect()->route('admin.projects.index')->with('message', "Added new project, titled: $project->title");
     }
@@ -67,6 +71,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+        // DEBUG
+        dd($project->technologies);
         return view('admin.projects.show', compact('project'));
     }
 
