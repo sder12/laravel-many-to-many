@@ -138,6 +138,7 @@ class ProjectController extends Controller
         if ($project->cover_img) {
             Storage::delete($project->cover_img);
         };
+        $project->technologies()->detach();
         $project->delete();
         return redirect()->route('admin.projects.index')->with('message', "$project->title was canceled");
     }
