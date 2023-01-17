@@ -6,7 +6,7 @@
             <div class="col col-8">
 
                 {{-- HEADING --}}
-                <div class=" mb-3 pb-2 border-bottom border-success border-2">
+                <div class="mb-3 pb-2 border-bottom border-success border-2">
                     <h4 class="pb-2">Create new project</h4>
                 </div>
                 {{-- / HEADING --}}
@@ -18,7 +18,7 @@
                     @csrf
 
                     {{-- Title Project --}}
-                    <div class="mb-3">
+                    <div class="form-group mb-3">
                         <label class="form-label" for="title">Title</label>
                         <input class="form-control @error('title') is-invalid @enderror" id="title" type="text"
                             name="title" value="{{ old('title') }}">
@@ -32,7 +32,7 @@
                     {{-- / Title project --}}
 
                     {{-- IMAGE --}}
-                    <div class="mb-3">
+                    <div class="form-group mb-3">
                         <label class="form-label" for="cover_img">Image</label>
                         <input class="form-control @error('cover_img') is-invalid @enderror" id="cover_img" type="file"
                             name="cover_img">
@@ -51,7 +51,7 @@
                     {{-- / IMAGE --}}
 
                     {{-- Description --}}
-                    <div class="mb-3">
+                    <div class="form-group mb-3">
                         <label class="form-label" for="description">Description</label>
                         <textarea class="form-control  @error('description') is-invalid @enderror" id="description" name="description"
                             rows="3">{{ old('description') }}</textarea>
@@ -65,7 +65,7 @@
                     {{-- / Description --}}
 
                     {{-- Year --}}
-                    <div class="mb-3 col-4">
+                    <div class="form-group mb-3 col-4">
                         <label class="form-label" for="creation_year">Year of creation</label>
                         <input class="form-control  @error('creation_year') is-invalid @enderror" id="creation_year"
                             type="number" min="1990" max="2030" name="creation_year"
@@ -78,9 +78,8 @@
                     </div>
                     {{-- /Year --}
 
-
                     {{-- Types --}}
-                    <div class="mb-3 col-4">
+                    <div class="form-group mb-3 col-4">
                         <label for="type">Type:</label>
                         <select name="type_id" id="type" class="form-select mt-2">
                             <option value=""> - </option>
@@ -94,15 +93,16 @@
                     {{-- /Types --}}
 
                     {{-- Technologies --}}
-                    <div>
-                        <ul>
-                            @foreach ($technologies as $tech)
-                                <li>{{ $tech->name }}</li>
-                            @endforeach
-                        </ul>
+                    <div class="form-group mb-3">
+                        <span>Technologies:</span>
+                        @foreach ($technologies as $tech)
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="" name="">
+                                <label class="form-check-label" for=""> {{ $tech->name }}</label>
+                            </div>
+                        @endforeach
                     </div>
                     {{-- /Technologies --}}
-
 
                     {{-- Btn CREATE --}}
                     <div class="mb-3 pt-2">
