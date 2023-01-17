@@ -60,15 +60,18 @@
                 {{-- / Image --}}
 
                 {{-- Technology --}}
-                @if ($project->technologies)
-                    <div class="text-end mt-5">
-                        <span>Technologies: </span>
-                        @foreach ($project->technologies as $tech)
-                            <a href="#"
-                                class="btn btn-outline-primary btn-sm rounded-0 fw-semibold mx-2">{{ $tech->name }}</a>
-                        @endforeach
-                    </div>
-                @endif
+
+                <div class="text-end mt-5">
+                    <span class="fw-semibold">Technologies: </span>
+                    @forelse ($project->technologies as $tech)
+                        <a href="#" class="btn btn-outline-primary btn-sm rounded-0 fw-semibold mx-2">
+                            #{{ $tech->name }}
+                        </a>
+                    @empty
+                        <span> - - - </span>
+                    @endforelse
+                </div>
+
                 {{-- / Technology --}}
 
 
