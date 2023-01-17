@@ -93,6 +93,16 @@
                     </div>
                     {{-- /Types --}}
 
+                    {{-- Technologies --}}
+                    <div>
+                        <ul>
+                            @foreach ($technologies as $tech)
+                                <li>{{ $tech->name }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    {{-- /Technologies --}}
+
 
                     {{-- Btn CREATE --}}
                     <div class="mb-3 pt-2">
