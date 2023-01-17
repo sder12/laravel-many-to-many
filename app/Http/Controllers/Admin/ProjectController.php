@@ -72,7 +72,7 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         // DEBUG
-        dd($project->technologies);
+        // dd($project->technologies);
         return view('admin.projects.show', compact('project'));
     }
 

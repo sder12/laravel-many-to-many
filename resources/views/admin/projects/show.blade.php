@@ -4,13 +4,19 @@
     <div class="container">
         <div class="row justify-content-center">
 
-            {{-- Back to All --}}
-            <div class="mt-5">
+            {{-- BUTTONS --}}
+            <div class="col-10 mt-5 d-flex justify-content-between ">
+                {{-- Back to All --}}
                 <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">
                     <i class="fa-solid fa-arrow-left"></i>
                 </a>
+                {{-- Btn EDIT --}}
+                <a class="btn btn-dark text-end" href="{{ route('admin.projects.edit', $project->slug) }}">
+                    <i class="fa-solid fa-pencil"></i>
+                </a>
             </div>
-            {{-- /Back to All --}}
+            {{-- /BUTTONS --}}
+
 
             <div class="col-8">
 
@@ -53,13 +59,19 @@
                 </div>
                 {{-- / Image --}}
 
-                {{-- Btn EDIT --}}
-                <div class="mt-3 text-end">
-                    <a class="btn btn-warning" href="{{ route('admin.projects.edit', $project->slug) }}">
-                        Modify
-                    </a>
-                </div>
-                {{-- /Btn EDIT --}}
+                {{-- Technology --}}
+                @if ($project->technologies)
+                    <div class="text-end mt-5">
+                        <span>Technologies: </span>
+                        @foreach ($project->technologies as $tech)
+                            <a href="#"
+                                class="btn btn-outline-primary btn-sm rounded-0 fw-semibold mx-2">{{ $tech->name }}</a>
+                        @endforeach
+                    </div>
+                @endif
+                {{-- / Technology --}}
+
+
             </div>
         </div>
     </div>
