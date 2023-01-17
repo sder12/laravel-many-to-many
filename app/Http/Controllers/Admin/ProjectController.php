@@ -85,7 +85,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -97,6 +98,7 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        // dd($request->all());
         $data = $request->validated();
         $data['slug'] = Project::generateSlug($data['title']);
 
@@ -111,6 +113,17 @@ class ProjectController extends Controller
         }
 
         $project->update($data);
+
+        //IF the request collection is not empty: synch the element inside
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($request->technologies);
+        }
+        //ELSE the request is empty: empty the prev collection
+        else {
+            $project->technologies()->sync([]);
+            // $project->technologies()->detach();
+        }
+
         return redirect()->route('admin.projects.index')->with('message', "The project $project->title was updated");
     }
 
