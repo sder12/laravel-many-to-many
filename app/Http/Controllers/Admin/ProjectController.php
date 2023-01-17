@@ -43,15 +43,19 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        //DEBUG
+        dd($request->all());
+
         $data = $request->validated();
         $data['slug'] = Project::generateSlug($data['title']);
         //If there is the img in the request add to storage folder
         if ($request->hasFile('cover_img')) {
             $path = Storage::put('proj_images', $request->cover_img);
             $data['cover_img'] = $path;
-        }
+        };
 
         $project = Project::create($data);
+
         return redirect()->route('admin.projects.index')->with('message', "Added new project, titled: $project->title");
     }
 

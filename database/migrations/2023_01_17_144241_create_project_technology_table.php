@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('technology_id');
             $table->foreign('technology_id')->references('id')->on('technologies')->cascadeOnDelete();
 
-            //Linked the FKs
+            //Linked the FKs          
             $table->primary(['project_id', 'technology_id']);
         });
     }
