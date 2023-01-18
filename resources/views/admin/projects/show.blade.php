@@ -7,7 +7,7 @@
             {{-- BUTTONS --}}
             <div class="col-10 mt-5 d-flex justify-content-between ">
                 {{-- Back to All --}}
-                <a href="{{ url()->previous() }}" class="btn btn-dark">
+                <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">
                     <i class="fa-solid fa-arrow-left"></i>
                 </a>
                 {{-- Btn EDIT --}}

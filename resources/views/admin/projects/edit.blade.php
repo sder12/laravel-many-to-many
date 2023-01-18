@@ -4,7 +4,7 @@
     <div class="container mt-5">
         {{-- Back to All --}}
         <div>
-            <a href="{{ url()->previous() }}" class="btn btn-dark">
+            <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
         </div>
@@ -110,7 +110,7 @@
                         @foreach ($technologies as $tech)
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="technology-{{ $tech->id }}"
-                                    name="technologies[]" value="{{ $tech->id }}" @checked($project->technologies->contains($tech))>
+                                    name="technologies[]" value="{{ $tech->id }}" @checked($errors->any() ? in_array($tech->id, old('technologies', [])) : $project->technologies->contains($tech))>
                                 <label class="form-check-label" for="technology-{{ $tech->id }}">
                                     {{ $tech->name }}
                                 </label>

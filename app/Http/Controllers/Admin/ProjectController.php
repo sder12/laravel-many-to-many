@@ -124,7 +124,7 @@ class ProjectController extends Controller
             // $project->technologies()->detach();
         }
 
-        return redirect()->route('admin.projects.index')->with('message', "The project $project->title was updated");
+        return redirect()->route('admin.projects.show', $project->slug)->with('message', "The project $project->title was updated");
     }
 
     /**
