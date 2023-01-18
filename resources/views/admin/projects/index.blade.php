@@ -2,11 +2,16 @@
 
 @section('content')
     <div class="container mt-5">
+        {{-- PAGINATOR --}}
+        <div class="my-3">
+            {{ $projects->links() }}
+        </div>
+        {{-- /PAGINATOR --}}
+
         <h3 class="text-center">Projects</h3>
 
         <div class="row justify-content-center">
             <div class="col-8">
-
 
                 {{-- MESSAGE FROM CONTROLLER --}}
                 @include('partials.session-message')
@@ -20,11 +25,6 @@
                 </div>
                 {{-- / Add new proj --}}
 
-                {{-- PAGINATOR --}}
-                <div class="my-3">
-                    {{ $projects->links() }}
-                </div>
-                {{-- /PAGINATOR --}}
 
                 {{-- TABLE --}}
                 <table class="table">
@@ -88,13 +88,7 @@
                 </table>
                 {{-- /TABLE --}}
 
-                {{-- To Top -> insert id in layouts.admin --}}
-                <div class="z-3 fixed-bottom mb-3 px-4 text-end ">
-                    <a href="#top" class="btn btn-light border border-dark">
-                        <i class="fa-solid fa-arrow-up"></i>
-                    </a>
-                </div>
-                {{-- / To Top -> insert id in layouts.admin --}}
+                @include('partials.to-top-btn')
 
             </div>
         </div>

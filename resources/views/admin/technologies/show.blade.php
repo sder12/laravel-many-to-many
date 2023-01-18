@@ -8,7 +8,7 @@
 
             {{-- Back to All --}}
             <div class="col-12">
-                <a href="{{ route('admin.technologies.index') }}" class="btn btn-dark">
+                <a href="{{ url()->previous() }}" class="btn btn-dark">
                     <i class="fa-solid fa-arrow-left"></i>
                 </a>
             </div>
@@ -108,6 +108,9 @@
 
                 </div>
             </div>
+
+
+            @include('partials.to-top-btn')
 
         </div>
     </div>

@@ -4,6 +4,12 @@
     <div class="container">
         <div class="row justify-content-center">
 
+            <div class="col-6">
+                {{-- MESSAGE FROM CONTROLLER --}}
+                @include('partials.session-message')
+                {{-- / MESSAGE FROM CONTROLLER --}}
+            </div>
+
             {{-- BUTTONS --}}
             <div class="col-10 mt-5 d-flex justify-content-between ">
                 {{-- Back to All --}}
@@ -16,7 +22,6 @@
                 </a>
             </div>
             {{-- /BUTTONS --}}
-
 
             <div class="col-8">
 
@@ -49,7 +54,6 @@
 
                 {{-- Image --}}
                 <div class="mt-4 d-flex justify-content-center">
-                    {{-- <strong class="d-block">Image:</strong> --}}
                     @if ($project->cover_img)
                         <img class="w-25 rounded border border-dark" src="{{ asset('storage/' . $project->cover_img) }}"
                             alt="{{ 'cover img of ' . $project->title }}">
@@ -63,7 +67,8 @@
                 <div class="text-end mt-5">
                     <span class="fw-semibold">Technologies: </span>
                     @forelse ($project->technologies as $tech)
-                        <a href="#" class="btn btn-outline-primary btn-sm rounded-0 fw-semibold mx-2">
+                        <a href="{{ route('admin.technologies.show', $tech->id) }}"
+                            class="btn btn-outline-primary btn-sm rounded-0 fw-semibold mx-2">
                             #{{ $tech->name }}
                         </a>
                     @empty
