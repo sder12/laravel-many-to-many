@@ -44,7 +44,7 @@ class ProjectController extends Controller
     public function store(StoreProjectRequest $request)
     {
         //DEBUG
-        // dd($request->all());
+        //dd($request->all());
 
         $data = $request->validated();
         $data['slug'] = Project::generateSlug($data['title']);
@@ -98,7 +98,7 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        // dd($request->all());
+        //dd($request->all());
         $data = $request->validated();
         $data['slug'] = Project::generateSlug($data['title']);
 
