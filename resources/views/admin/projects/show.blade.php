@@ -7,7 +7,7 @@
             {{-- BUTTONS --}}
             <div class="col-10 mt-5 d-flex justify-content-between ">
                 {{-- Back to All --}}
-                <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">
+                <a href="{{ url()->previous() }}" class="btn btn-dark">
                     <i class="fa-solid fa-arrow-left"></i>
                 </a>
                 {{-- Btn EDIT --}}
@@ -60,7 +60,6 @@
                 {{-- / Image --}}
 
                 {{-- Technology --}}
-
                 <div class="text-end mt-5">
                     <span class="fw-semibold">Technologies: </span>
                     @forelse ($project->technologies as $tech)
@@ -71,7 +70,6 @@
                         <span> - - - </span>
                     @endforelse
                 </div>
-
                 {{-- / Technology --}}
 
 

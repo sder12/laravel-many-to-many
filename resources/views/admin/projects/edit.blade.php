@@ -4,7 +4,7 @@
     <div class="container mt-5">
         {{-- Back to All --}}
         <div>
-            <a href="{{ route('admin.projects.index') }}" class="btn btn-dark">
+            <a href="{{ url()->previous() }}" class="btn btn-dark">
                 <i class="fa-solid fa-arrow-left"></i>
             </a>
         </div>
