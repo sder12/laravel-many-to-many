@@ -79,7 +79,14 @@ class TechnologyController extends Controller
      */
     public function update(Request $request, Technology $technology)
     {
-        dd($technology->name);
+        //dd($technology->name);
+        $data = $request->validate([
+            'name' => ['required', 'unique:technologies']
+        ]);
+        $data['slug'] = Str::slug($data['name'], '-');
+        $technology->update($data);
+
+        return redirect()->back()->with('message', "$technology->name was updated");
     }
 
     /**
