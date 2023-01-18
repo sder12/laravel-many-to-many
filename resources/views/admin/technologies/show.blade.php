@@ -6,16 +6,107 @@
     <div class="container">
         <div class="row mt-5">
 
+            {{-- Back to All --}}
             <div class="col-12">
-                {{-- Back to All --}}
                 <a href="{{ route('admin.technologies.index') }}" class="btn btn-dark">
                     <i class="fa-solid fa-arrow-left"></i>
                 </a>
-                {{-- / Back to All --}}
             </div>
+            {{-- / Back to All --}}
+
 
             <div class="col-12 text-center">
-                <h2>Technology: {{ $technology->name }} </h2>
+
+                {{-- Title --}}
+                <h2 class="text-primary">{{ $technology->name }} </h2>
+                <span> <strong>slug:</strong> {{ $technology->slug }} </span>
+                {{-- / Title --}}
+
+
+                <div class="mt-5 text-start">
+
+                    {{-- Subtitle --}}
+                    <div>
+                        <strong>There are {{ count($technology->projects) }} projects under the
+                            #{{ $technology->name }}</strong>
+                    </div>
+                    {{-- /Subtitle --}}
+
+                    <div class="row mt-3">
+                        {{-- Project Cards --}}
+                        @forelse ($technology->projects as $project)
+                            <div class="col-3 mt-3">
+                                <div class="card" style="width: 18rem;">
+
+                                    {{-- Image --}}
+                                    @if ($project->cover_img)
+                                        <img class="card-img-top" src="{{ asset('storage/' . $project->cover_img) }}"
+                                            alt="{{ 'cover img of ' . $project->title }}">
+                                    @else
+                                        <div class="py-5 text-center bg-secondary bg-opacity-25 card-img-top">
+                                            No image found
+                                        </div>
+                                    @endif
+                                    {{-- / Image --}}
+
+                                    {{-- Text --}}
+                                    <div class="card-body">
+                                        {{-- Title + Description --}}
+                                        <h5 class="card-title">{{ $project->title }}</h5>
+                                        <p class="card-text"> {{ $project->description }} </p>
+                                        {{-- / Title + Description --}}
+
+                                        {{-- LIST --}}
+                                        <ul class="list-group list-group-flush">
+                                            {{-- Technology # --}}
+                                            <li class="list-group-item">
+                                                @foreach ($project->technologies as $tech)
+                                                    <a href="{{ route('admin.technologies.show', $tech->id) }}"
+                                                        class="me-2">
+                                                        #{{ $tech->name }} </a>
+                                                @endforeach
+                                            </li>
+                                            {{-- / Technology # --}}
+
+                                            {{-- Type --}}
+                                            <li class="list-group-item text-success">
+                                                @if ($project->type)
+                                                    {{ $project->type->name }}
+                                                @else
+                                                    <span>---</span>
+                                                @endif
+                                            </li>
+                                            {{-- / Type --}}
+
+                                            {{-- Year Creation --}}
+                                            <li class="list-group-item">made in {{ $project->creation_year }}</li>
+                                            {{-- /Year Creation --}}
+                                        </ul>
+                                        {{-- / LIST --}}
+
+                                        {{-- Btn see details proj --}}
+                                        <div class="text-end">
+                                            <a href="{{ route('admin.projects.show', $project->slug) }}"
+                                                class="btn btn-outline-secondary">see details</a>
+                                        </div>
+                                        {{-- / Btn see details proj --}}
+                                    </div>
+                                    {{-- /Text --}}
+                                </div>
+                            </div>
+                            {{-- /Project Card  --}}
+
+                        @empty
+                            {{-- Without any project --}}
+                            <span class="mt-3 fs-3 text-secondary">
+                                <em> No project found under the #{{ $technology->name }}</em>
+                            </span>
+                            {{-- /Without any project --}}
+                        @endforelse
+
+                    </div>
+
+                </div>
             </div>
 
         </div>
