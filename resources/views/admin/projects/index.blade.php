@@ -7,6 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-8">
 
+
                 {{-- MESSAGE FROM CONTROLLER --}}
                 @if (session('message'))
                     <div class="alert alert-warning mt-3">
@@ -23,6 +24,11 @@
                 </div>
                 {{-- / Add new proj --}}
 
+                {{-- PAGINATOR --}}
+                <div class="my-3">
+                    {{ $projects->links() }}
+                </div>
+                {{-- /PAGINATOR --}}
 
                 {{-- TABLE --}}
                 <table class="table">
@@ -85,6 +91,8 @@
                     </tbody>
                 </table>
                 {{-- /TABLE --}}
+
+
 
             </div>
         </div>
