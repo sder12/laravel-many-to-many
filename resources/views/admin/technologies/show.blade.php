@@ -26,11 +26,23 @@
                 <div class="mt-5 text-start">
 
                     {{-- Subtitle --}}
-                    <div>
-                        <strong>There are {{ count($technology->projects) }} projects under the
-                            #{{ $technology->name }}</strong>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <strong>There are {{ count($technology->projects) }} projects under the
+                                #{{ $technology->name }}</strong>
+                        </div>
+
+                        <div class="mx-4">
+                            others:
+                            @foreach ($technologies as $tech)
+                                <a href="{{ route('admin.technologies.show', $tech->id) }}"
+                                    class="mx-1"><em>#{{ $tech->name }}</em></a>
+                            @endforeach
+                        </div>
                     </div>
                     {{-- /Subtitle --}}
+
+
 
                     <div class="row mt-3">
                         {{-- Project Cards --}}

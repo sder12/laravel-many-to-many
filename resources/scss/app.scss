@@ -5,3 +5,17 @@ html {
     scroll-behavior: smooth;
 
 }
+
+#img-proj-index {
+    max-width: 200px;
+}
+
+.pagination .page-item .page-link {
+    color: black;
+}
+
+.page-link.active,
+.active>.page-link {
+    background-color: lightblue;
+    border-color: lightblue;
+}

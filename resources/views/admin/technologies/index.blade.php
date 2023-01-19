@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
 
-            <h3 class="text-center my-5">Technologies</h3>
+            <h3 class="my-5 text-center fw-bold text-uppercase"">Technologies</h3>
 
             {{-- MESSAGE FROM CONTROLLER --}}
             @include('partials.session-message')
@@ -33,10 +33,11 @@
             <div class="col-8">
                 <table class="table">
                     <thead>
-                        <tr>
-                            <th scope="col">Name</th>
+                        <tr class="text-center">
+                            <th scope="col" class="text-start">Name</th>
                             <th scope="col">Slug</th>
                             <th scope="col">Project n°</th>
+                            <th scope='col'></th>
                             <th scope="col">Actions</th>
 
                         </tr>
@@ -46,7 +47,7 @@
                             <tr>
                                 {{-- <td>{{ $tech->name }}</td> --}}
                                 {{-- EDIT link to btn in actions, linked tro id-form form-btn --}}
-                                <td>
+                                <td class="text-start">
                                     <form id="edit-technology-{{ $tech->id }}"
                                         action="{{ route('admin.technologies.update', $tech->id) }}" method="POST">
                                         @csrf
@@ -55,23 +56,29 @@
                                             value="{{ $tech->name }}">
                                     </form>
                                 </td>
-                                <td>{{ $tech->slug }}</td>
+                                <td class="text-center"><em>{{ $tech->slug }}</em></td>
+
+                                {{-- Count --}}
+                                <td class="text-center">
+                                    <span class="me-2">{{ count($tech->projects) }}</span>
+                                </td>
+                                {{-- /Count --}}
 
                                 {{-- Show --}}
-                                <td>
-                                    <span class="me-2">{{ count($tech->projects) }}</span>
-                                    <a href="{{ route('admin.technologies.show', $tech->id) }}" class="btn btn-light">
-                                        <i class="fa-regular fa-eye"></i>
+                                <td class="text-center">
+                                    {{-- show --}}
+                                    <a href="{{ route('admin.technologies.show', $tech->id) }}" class="btn btn-secondary">
+                                        see projects
                                     </a>
                                 </td>
                                 {{-- / Show --}}
 
                                 {{-- Edit + Delete --}}
-                                <td>
+                                <td class="d-flex justify-content-center">
                                     {{-- edit --}}
-                                    <button form="edit-technology-{{ $tech->id }}" class="btn btn-warning"
+                                    <button form="edit-technology-{{ $tech->id }}" class="btn btn-warning mx-2"
                                         href="" type="submit">
-                                        edit
+                                        save
                                     </button>
                                     {{-- delete --}}
                                     <form action="{{ route('admin.technologies.destroy', $tech->id) }}" method="POST">

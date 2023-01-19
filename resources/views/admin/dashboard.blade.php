@@ -15,6 +15,10 @@
                         @endif
                         <h4>Welcome {{ Auth::user()->name }}</h4>
                         <span>You are logged in!</span>
+
+                        <div class="mt-2">
+                            <a href="{{ route('admin.projects.index') }}">click here to see all your project</a>
+                        </div>
                     </div>
                 </div>
             </div>

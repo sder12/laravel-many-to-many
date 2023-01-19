@@ -48,7 +48,9 @@
                 {{-- Sidebar --}}
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
-                        <ul class="nav flex-column">
+
+                        <ul class="nav flex-column mt-3">
+
                             {{-- Dashboard --}}
                             <li class="nav-item">
                                 <a class="nav-link text-white 
@@ -58,30 +60,51 @@
                                     Dashboard
                                 </a>
                             </li>
+                            {{-- / Dashboard --}}
+
+                            <hr class="border border-danger border-2 opacity-50">
+
                             {{-- Projects INDEX --}}
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.projects.index' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.projects.index') }}">
-                                    <i class="fa-solid fa-folder-open"></i>
+                                    <i class="fa-regular fa-folder-open"></i>
                                     Projects
                                 </a>
                             </li>
+                            {{-- /Projects INDEX --}}
+
+                            {{-- Technologies --}}
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.technologies.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.technologies.index') }}">
+                                    <i class="fa-regular fa-folder-open"></i>
+                                    Technologies
+                                </a>
+                            </li>
+                            {{-- /Technologies --}}
+
+                            {{-- Types --}}
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.types.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.types.index') }}">
+                                    <i class="fa-regular fa-folder-open"></i>
+                                    Types
+                                </a>
+                            </li>
+                            {{-- /Types --}}
+
+                            <hr class="border border-danger border-2 opacity-50">
+
                             {{-- CREATE --}}
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.projects.create' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.projects.create') }}">
                                     <i class="fa-regular fa-square-plus"></i>
-                                    Create new one
+                                    Add Project
                                 </a>
                             </li>
-                            {{-- Technologies --}}
-                            <li class="nav-item">
-                                <a class="nav-link text-white {{ Route::currentRouteName() === 'admin.technologies.index' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.technologies.index') }}">
-                                    <i class="fa-regular fa-folder"></i>
-                                    Technologies
-                                </a>
-                            </li>
+                            {{-- /CREATE --}}
                         </ul>
                     </div>
 
